@@ -8,7 +8,7 @@ ULET = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O
 
 
 def phrase():
-    word = input("Enter phrase: ")
+    word = raw_input("Enter phrase: ")
     wordform = "\n".join(word)
     for let, ulet in zip(LET, ULET):
         wordform = wordform.replace(ulet, let)
