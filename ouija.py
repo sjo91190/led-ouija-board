@@ -20,7 +20,7 @@ def letter(n):
 
 
 def run():
-    with open("/home/pi/phrase.txt", "r") as ouijaSpeak:
+    with open("/home/pi/led-ouija-board/phrase.txt", "r") as ouijaSpeak:
         data = ouijaSpeak.read()
         for line in data:
             if " " in line:
