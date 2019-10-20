@@ -12,7 +12,7 @@ def phrase():
     wordform = "\n".join(word)
     for let, ulet in zip(LET, ULET):
         wordform = wordform.replace(ulet, let)
-        with open("/home/pi/phrase.txt", "w") as phraseFile:
+        with open("/home/pi/led-ouija-board/phrase.txt", "w") as phraseFile:
             phraseFile.write(wordform)
 
 
