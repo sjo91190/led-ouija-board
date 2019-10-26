@@ -5,36 +5,35 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-PIN = (2, 3, 4, 17, 27, 22, 10, 9, 11, 5, 6, 13, 19, 26, 14, 15, 18, 23, 24, 25, 8, 7, 12, 16, 20, 21)
-LET = ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
-       "w", "x", "y", "z")
+pin_let = {"a": 2, "b": 3, "c": 4, "d": 17, "e": 27, "f": 22, "g": 10, "h": 9, "i": 11, "j": 5, "k": 6, "l": 13,
+           "m": 19, "n": 26, "o": 14, "p": 15, "q": 18, "r": 23, "s": 24, "t": 25, "u": 8, "v": 7, "w": 12, "x": 16,
+           "y": 20, "z": 21}
 
 
 def letter(n):
-    for pin, let in zip(PIN, LET):
-        if n == let:
-            GPIO.output(pin, GPIO.HIGH)
-            time.sleep(0.5)
-            GPIO.output(pin, GPIO.LOW)
-            time.sleep(0.5)
+    GPIO.output(pin_let[n.strip('\n')], GPIO.HIGH)
+    time.sleep(0.5)
+    GPIO.output(pin_let[n.strip('\n')], GPIO.LOW)
+    time.sleep(0.5)
 
 
 def run():
     with open("/home/pi/led-ouija-board/phrase.txt", "r") as ouijaSpeak:
-        data = ouijaSpeak.read()
-        for line in data:
+        for line in ouijaSpeak:
             if " " in line:
                 time.sleep(1)
-            if any(item in line for item in LET):
-                letter(line)
+            else:
+                try:
+                    letter(line)
+                except KeyError:
+                    time.sleep(1)
 
 
 while True:
-
     try:
-        GPIO.setup(PIN, GPIO.OUT)
+        GPIO.setup(list(pin_let.values()), GPIO.OUT)
         run()
         time.sleep(1)
     except KeyboardInterrupt:
-        GPIO.output(PIN, GPIO.LOW)
+        GPIO.output(list(pin_let.values()), GPIO.LOW)
         quit()
