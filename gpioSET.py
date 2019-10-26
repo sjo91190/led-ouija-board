@@ -11,12 +11,17 @@ GPIO.output(16, GPIO.LOW)
 
 
 def gpio_cycle():
-    for item in range(len(PIN)):
+    for item in PIN:
         GPIO.output(PIN[item], GPIO.HIGH)
-        time.sleep(0.07)
+        time.sleep(0.05)
         GPIO.output(PIN[item], GPIO.LOW)
-        time.sleep(0.07)
+        time.sleep(0.05)
         item += 1
 
+
+def gpio_flash():
+    GPIO.output(PIN, GPIO.HIGH)
+    time.sleep(0.05)
+    GPIO.output(PIN, GPIO.LOW)
 
 gpio_cycle()
