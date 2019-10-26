@@ -2,6 +2,8 @@ import time
 import RPi.GPIO as GPIO
 
 
+time.sleep(4)
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
