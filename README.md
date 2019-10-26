@@ -17,6 +17,7 @@ REQUIRED MATERIALS:
    - [Raspberry Pi GPIO Breakout Module](https://www.amazon.com/CanaKit-Raspberry-Breakout-40-Pin-T-Shaped/dp/B011CZ2LEY/)
    - [Solderless Breadboard](https://www.amazon.com/EL-CP-003-Breadboard-Solderless-Distribution-Connecting/dp/B01EV6LJ7G/)
    - [Male to Female Jumpers](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD1D64V/)
+   - [470 Ohm Resistors](https://www.amazon.com/EDGELEC-Resistor-Tolerance-Multiple-Resistance/dp/B07QG1V4BH/)
    - [Yellow LEDs](https://www.amazon.com/gp/product/B01GDZVTFA/)
    - [3mm LED Holders](https://www.amazon.com/gp/product/B01E3FY6ZC/)
    - [Heatshrink Tubing](https://www.amazon.com/560PCS-Heat-Shrink-Tubing-Eventronic/dp/B072PCQ2LW/)
