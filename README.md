@@ -37,7 +37,7 @@ PREREQUISITES:
 
    - [Instructions for enabling SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/)
      
-     -Follow the guide on Option 3
+     - Follow the guide on Option 3
    
 
 CONSTRUCTION:
