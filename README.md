@@ -2,6 +2,8 @@
 
 This is a raspberry pi based project to display messages on a Ouija board using LEDs.
 
+(Construction and Pre-Requisite instructions coming soon)
+
 SETUP INSTRUCTIONS:
 
 1. Clone the project to your RPi:
