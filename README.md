@@ -8,6 +8,8 @@ REQUIRED TOOLS:
 
    - Electric Drill
    - 4mm or 5/32in Drill Bit
+   - Lighter
+   - Double-sided foam tape
 
 REQUIRED MATERIALS:
 
@@ -27,6 +29,7 @@ RESOURCES:
 
    - [Raspbian Images](https://www.raspberrypi.org/downloads/raspbian/)
    - [Raspberry Pi GPIO Pinout Diagram](https://www.raspberrypi.org/documentation/usage/gpio/)
+   - [LED Anode/Cathode Diagram](https://www.build-electronic-circuits.com/wp-content/uploads/2014/05/LED-anatomy-1024x455.png)
 
 PREREQUISITES:
 
@@ -42,8 +45,34 @@ PREREQUISITES:
    
 
 CONSTRUCTION:
+1. Drill holes through the middle of letters. The back may peel apart at drill sites so be careful. 
+If it does peel a little bit, it is not a big deal.
+2. Wire up the LEDs
 
-
+   - Be familiar with anode/cathode (+/-) on the LED. See LED Diagram in Resources section
+   - Use warm color jumper wires when connecting to the anode (+) and dull colors when connecting to the cathode (-) 
+   so you don't get them mixed up.
+   - When the jumper cables are connected to the LED, slip a piece of heat shrink tubing over each of the 
+   jumper leads up to the connection to the LED. Use a size that is nice and snug.
+   - Apply a heat source (lighter is OK) briefly to the heat shrink tubing until it is tight against the leads
+   - Slip a piece of heat shrink tubing over both of the jumper leads (Use appropriate size), all the way up to the LED 
+   (but not covering the LED, obviously).
+   - Apply heat source to the heat shrink tubing until it is tight and holding both leads together
+   - Repeat 26 times, one for each letter - Or extra if you think you will need them.
+3. Pop the LED holders into the Ouija board from the front
+4. Push the LEDs into the LED holders from the inside
+5. Mount the breadboard and the Raspberry Pi and make connections between the two
+   - Mount the breadboard to the bottom of the Ouija board. Breadboard has adhesive on the back.
+   - Connect the Raspberry Pi GPIO breakout board to the breadboard and to the Raspberry Pi.
+   - Once you have an idea of where to place the Raspberry Pi, mount the bottom of the case to the Ouija board using the 
+   double-sided foam tape and insert the Raspberry Pi into the case.
+   - Be sure to leave space for ease of access to the power connection on the Raspberry Pi.
+6. Begin wiring the project. [Wiring Diagram](https://github.com/sjo91190/led-ouija-board/blob/master/OuijaBoardWiring.pdf)
+    - Insert the 470 ohm resistors down the middle of the breadboard, starting at one side
+    - Begin wiring the GPIO pins from the GPIO breakout board to one side of the resistors
+    - Begin wiring the LEDs to the other side of the resistors
+7. Find a nice shadow box to contain the project!
+   
 SETUP INSTRUCTIONS:
 
 1. Insert the MicroSD Card into the Raspberry Pi
@@ -65,7 +94,17 @@ SETUP INSTRUCTIONS:
    - Select option N1 and follow the instructions to change the hostname
    - You will be prompted to reboot, accept the reboot
    - When logging in now, you will need to run: `ssh pi@ouijaboard`
+   
+6. Connect the Raspberry Pi to your wifi network
 
+   - Run command `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
+   - At the bottom of the file, add:
+      ```
+      network={
+           ssid="YourWifiSSID"
+           psk="YourWifiPASSWORD"
+      }
+      ```
 2. Clone the project to your RPi:
 
    `git clone https://github.com/sjo91190/led-ouija-board.git`
