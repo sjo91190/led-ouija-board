@@ -21,7 +21,7 @@ def letter(n):
 
 def run():
     with open("/home/pi/led-ouija-board/WebGUI/webphrase.txt", "r") as formatFile:
-        wordform = "\n".join(formatFile)
+        wordform = "\n".join(formatFile).lower()
         for line in wordform:
             if " " in line:
                 time.sleep(1)

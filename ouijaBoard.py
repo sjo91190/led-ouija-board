@@ -1,8 +1,7 @@
 def phrase():
-    word = input("Enter phrase: ").lower()
-    wordform = "\n".join(word)
-    with open("/home/pi/led-ouija-board/phrase.txt", "w") as phraseFile:
-        phraseFile.write(wordform)
+    word = input("Enter phrase: ")
+    with open("/home/pi/led-ouija-board/WebGUI/webphrase.txt", "w") as phraseFile:
+        phraseFile.write(word)
 
 
 while True:
