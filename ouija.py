@@ -20,8 +20,9 @@ def letter(n):
 
 
 def run():
-    with open("/home/pi/led-ouija-board/phrase.txt", "r") as ouijaSpeak:
-        for line in ouijaSpeak:
+    with open("/home/pi/led-ouija-board/WebGUI/webphrase.txt", "r") as formatFile:
+        wordform = "\n".join(formatFile)
+        for line in wordform:
             if " " in line:
                 time.sleep(1)
             else:
