@@ -1,13 +1,12 @@
-from time import sleep
-from gpiozero import LED
-from os import urandom
-from flask import Flask, request, json, render_template, redirect, url_for, session
+from os import urandom, environ
 from waitress import serve
+from multiprocessing import Process
 from paste.translogger import TransLogger
+from flask import Flask, request, render_template, redirect, url_for, session
+from ouija_board.db import DBFunctions
+from ouija_board import config as led
 
-pinout = {"a": 2, "b": 3, "c": 4, "d": 17, "e": 27, "f": 22, "g": 10, "h": 9, "i": 11, "j": 5,
-          "k": 6, "l": 13, "m": 19, "n": 26, "o": 14, "p": 15, "q": 18, "r": 23, "s": 24, "t": 25,
-          "u": 8, "v": 7, "w": 12, "x": 16, "y": 20, "z": 21}
+phrase_db = DBFunctions("ouija_board/phrase.db")
 
 ouija = Flask(__name__)
 ouija.secret_key = urandom(24)
@@ -27,11 +26,31 @@ def index():
 @ouija.route("/response", methods=["GET"])
 def response():
     phrase = session["phrase"]
+    phrase_db.update(phrase)
     return render_template("response.html", phrase=phrase)
 
 
-if __name__ == "__main__":
+def start_server():
     host = "0.0.0.0"
     port = 5000
-    ouija.run(host=host, port=port, debug=True)
+    ouija.run(host=host, port=port, debug=True, use_reloader=False)
     # serve(TransLogger(ouija), host=host, port=port)
+
+
+def phrase_loop():
+
+    # led.gpio_cycle()
+    led.gpio_flash(2)
+
+    while True:
+        try:
+            led.run_phrase(phrase_db.retrieve())
+            print(phrase_db.retrieve())
+        except KeyboardInterrupt:
+            quit()
+
+
+if __name__ == "__main__":
+    Process(target=start_server, args=()).start()
+    phrase_loop()
+
