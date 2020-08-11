@@ -1,12 +1,12 @@
-from os import urandom, environ
+from os import urandom
 from waitress import serve
 from multiprocessing import Process
 from paste.translogger import TransLogger
 from flask import Flask, request, render_template, redirect, url_for, session
-from ouija_board.db import DBFunctions
+from ouija_board.db import DBOperations
 from ouija_board import config as led
 
-phrase_db = DBFunctions("ouija_board/phrase.db")
+phrase_db = DBOperations("ouija_board/phrase.db")
 
 ouija = Flask(__name__)
 ouija.secret_key = urandom(24)

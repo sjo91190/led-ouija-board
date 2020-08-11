@@ -1,7 +1,7 @@
 import sqlite3
 
 
-class DBFunctions:
+class DBOperations:
     def __init__(self, db_file):
         self.db_file = db_file
 
