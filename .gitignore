@@ -3,3 +3,4 @@
 *.fzz
 ouija/
 __pycache__/
+*.pyc

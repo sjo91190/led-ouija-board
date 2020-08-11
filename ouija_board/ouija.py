@@ -6,10 +6,10 @@ from flask import Flask, request, render_template, redirect, url_for, session
 from ouija_board.db import DBOperations
 from ouija_board import config as led
 
-dirname = path.dirname(__file__)
-filename = path.join(dirname, 'ouija_board/phrase.db')
+rel_path = path.abspath(path.dirname(__file__))
+db_path = path.join(rel_path, "phrase.db")
 
-phrase_db = DBOperations(filename)
+phrase_db = DBOperations(db_path)
 
 ouija = Flask(__name__)
 ouija.secret_key = urandom(24)
@@ -36,8 +36,8 @@ def response():
 def start_server():
     host = "0.0.0.0"
     port = 5000
-    ouija.run(host=host, port=port, debug=True, use_reloader=False)
-    # serve(TransLogger(ouija), host=host, port=port)
+    # ouija.run(host=host, port=port, debug=True, use_reloader=False)
+    serve(TransLogger(ouija), host=host, port=port)
 
 
 def phrase_loop():
