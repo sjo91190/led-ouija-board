@@ -6,7 +6,7 @@ from flask import Flask, request, render_template, redirect, url_for, session
 from ouija_board.db import DBOperations
 from ouija_board import config as led
 
-phrase_db = DBOperations("ouija_board/phrase.db")
+phrase_db = DBOperations("phrase.db")
 
 ouija = Flask(__name__)
 ouija.secret_key = urandom(24)
