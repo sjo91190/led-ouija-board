@@ -1,4 +1,4 @@
-from os import urandom
+from os import urandom, path
 from waitress import serve
 from multiprocessing import Process
 from paste.translogger import TransLogger
@@ -6,7 +6,10 @@ from flask import Flask, request, render_template, redirect, url_for, session
 from ouija_board.db import DBOperations
 from ouija_board import config as led
 
-phrase_db = DBOperations("phrase.db")
+dirname = path.dirname(__file__)
+filename = path.join(dirname, 'ouija_board/phrase.db')
+
+phrase_db = DBOperations(filename)
 
 ouija = Flask(__name__)
 ouija.secret_key = urandom(24)
