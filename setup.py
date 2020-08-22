@@ -8,7 +8,7 @@ setup(
     install_requires=["click==7.1.2", "colorzero==1.1", "Flask==1.1.2",
                       "gpiozero==1.5.1", "itsdangerous==1.1.0", "Jinja2==2.11.2",
                       "MarkupSafe==1.1.1", "Paste==3.4.3", "six==1.15.0", "waitress==1.4.4",
-                      "Werkzeug==1.0.1"],
+                      "Werkzeug==1.0.1", "RPi.GPIO==0.7.0"],
 
     author="Sam O'Keefe",
     author_email="sjo91190@gmail.com",
