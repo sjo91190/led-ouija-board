@@ -81,7 +81,6 @@ def phrase_loop():
 
     while True:
         try:
-            print(phrase_db.retrieve())
             led.run_phrase(phrase_db.retrieve())
         except KeyboardInterrupt:
             sys.exit()
