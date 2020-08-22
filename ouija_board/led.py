@@ -47,10 +47,10 @@ def gpio_flash(count):
         sleep(0.07)
 
     # for _ in range(count):
-        # print("ALL ON")
-        # sleep(0.07)
-        # print("ALL OFF")
-        # sleep(0.07)
+    #     print("ALL ON")
+    #     sleep(0.07)
+    #     print("ALL OFF")
+    #     sleep(0.07)
 
 
 def letter(char):
@@ -65,9 +65,9 @@ def letter(char):
     LED_ARRAY[led].off()
     sleep(0.5)
 
-    # print(f"{n.upper()} ({led}): ON")
+    # print(f"{char.upper()} ({led}): ON")
     # sleep(0.5)
-    # print(f"{n.upper()} ({led}): OFF")
+    # print(f"{char.upper()} ({led}): OFF")
     # sleep(0.5)
 
 

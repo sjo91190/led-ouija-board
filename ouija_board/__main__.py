@@ -2,7 +2,7 @@
 
 from time import sleep
 from multiprocessing import Process
-from .ouija import phrase_loop, start_server
+from .ouija import start_server, phrase_loop
 
 Process(target=start_server, args=()).start()
 sleep(1)
