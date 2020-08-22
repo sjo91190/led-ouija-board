@@ -1,0 +1,8 @@
+.idea/
+.DS_Store
+*.fzz
+ouija/
+__pycache__/
+*.pyc
+phrase.db
+locustfile.py
