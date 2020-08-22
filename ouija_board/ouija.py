@@ -68,7 +68,7 @@ def api_response():
 def start_server():
     """Function to start the web app"""
     host = "0.0.0.0"
-    port = 5000
+    port = 80
     serve(TransLogger(ouija), host=host, port=port)
 
 
