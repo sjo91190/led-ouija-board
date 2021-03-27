@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
-from ouija_board import __version__
+
+__version__ = "1.1.0"
 
 setup(
     name="ouijaboard",
