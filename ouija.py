@@ -1,17 +1,20 @@
 import sys
 from multiprocessing import Process
 from waitress import serve
+from sqlalchemy import desc
 from paste.translogger import TransLogger
-from app import app_factory
-from app.ouija_board import led
-from config import phrase_db
+from app import app_factory, led
+from app.models import OuijaPhrase
+from app import db
+
+ouija_app = app_factory("develop")
 
 
 def start_server():
     """Function to start the web app"""
     host = "127.0.0.1"
     port = 9000
-    ouija_app = app_factory("develop")
+
     serve(TransLogger(ouija_app), host=host, port=port)
 
 
@@ -24,12 +27,16 @@ def phrase_loop():
 
     while True:
         try:
-            led.run_phrase(phrase_db.retrieve())
+            with ouija_app.app_context():
+                phrase = db.session.query(OuijaPhrase.phrase).order_by(desc(OuijaPhrase.id)).first()
+                if phrase:
+                    led.run_phrase(phrase=phrase[0])
+                else:
+                    led.run_phrase(phrase="INIT")
         except KeyboardInterrupt:
             sys.exit()
 
 
 if __name__ == "__main__":
-    phrase_db.create()
     Process(target=start_server, args=()).start()
     phrase_loop()

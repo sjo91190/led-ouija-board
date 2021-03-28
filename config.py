@@ -1,13 +1,14 @@
-from os import path
-from app.db import DBOperations
+from os import path, urandom
 
 base_dir = path.abspath(path.dirname(__file__))
 db_path = path.join(base_dir, "phrase.db")
 
-phrase_db = DBOperations(db_path)
-
 
 class Config:
+
+    SECRET_KEY = urandom(24)
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + path.join(db_path)
 
     @staticmethod
     def init_app(app):
