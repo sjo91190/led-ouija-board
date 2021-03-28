@@ -6,7 +6,7 @@ from app.models import OuijaPhrase
 from app import db
 
 
-@api.route("/response", methods=["POST"])
+@api.route("/set", methods=["POST"])
 def api_response():
     """API for the web app used for testing
 

@@ -1,14 +1,14 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from config import config
+from config import Config
 
 db = SQLAlchemy()
 
 
-def app_factory(config_name):
+def app_factory():
     app = Flask(__name__)
-    app.config.from_object(config[config_name])
-    config[config_name].init_app(app)
+    app.config.from_object(Config)
+    Config.init_app(app)
 
     db.init_app(app)
     with app.app_context():

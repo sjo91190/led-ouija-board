@@ -1,19 +1,22 @@
+import os
 import sys
 from multiprocessing import Process
 from waitress import serve
 from sqlalchemy import desc
 from paste.translogger import TransLogger
+from app import db
+from config import get_env
 from app import app_factory, led
 from app.models import OuijaPhrase
-from app import db
 
-ouija_app = app_factory("develop")
+get_env()
+ouija_app = app_factory()
 
 
 def start_server():
     """Function to start the web app"""
-    host = "127.0.0.1"
-    port = 9000
+    host = os.getenv("HOST")
+    port = os.getenv("PORT")
 
     serve(TransLogger(ouija_app), host=host, port=port)
 
