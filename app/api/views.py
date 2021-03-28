@@ -2,7 +2,8 @@ import json
 import datetime
 from flask import request
 from app.api import api
-from config import phrase_db
+from app.models import OuijaPhrase
+from app import db
 
 
 @api.route("/response", methods=["POST"])
@@ -16,7 +17,10 @@ def api_response():
     remote_ip = request.remote_addr
     phrase = json.loads(request.data)
 
-    phrase_db.insert(now, remote_ip, phrase["phrase"])
+    insert_phrase = OuijaPhrase(timestamp=now, remote_ip=remote_ip, phrase=phrase['phrase'])
+    db.session.add(insert_phrase)
+    db.session.commit()
+
     resp = {"phrase": phrase["phrase"], "time": now}
 
     return json.dumps(resp), 201

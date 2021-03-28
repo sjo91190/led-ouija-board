@@ -1,6 +1,8 @@
 click==7.1.2
 colorzero==1.1
 Flask==1.1.2
+Flask-SQLAlchemy==2.5.1
+SQLAlchemy==1.4.3
 gpiozero==1.5.1
 itsdangerous==1.1.0
 Jinja2==2.11.3
